@@ -8,17 +8,6 @@ app.listen(3000)
 
 dotenv.config();
 const router = express.Router();
-const getuser = (req,res)=>{
-   res.json({
-    message:"user"
-   })
-}
-
-router.
-    route('/user')
-    .get(getuser)
-
-app.use(router)
 
 dbConnect()
 
