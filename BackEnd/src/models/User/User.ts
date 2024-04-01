@@ -7,7 +7,6 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-  
   },
   address: {
     houseNumber: { type: String, required: true },

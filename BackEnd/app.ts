@@ -1,4 +1,4 @@
-const express = require('express')
+import express from 'express'
 const {dbConnect} = require('./src/database/Database')
 const dotenv = require("dotenv");
 const userModel = require('./src/models/User')
