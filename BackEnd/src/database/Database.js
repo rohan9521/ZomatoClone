@@ -3,11 +3,12 @@ const dotenv = require('dotenv')
 dotenv.config()
 const dbLink = process.env.DB_LINK
 
-const dbConnect = () => {
+const dbConnect = (sendData) => {
   console.log(dbLink)
   mongoose.connect(dbLink)
-    .then((db) => {
+    .then(async() => {
       console.log("dbConnected");
+      await sendData()
     })
     .catch((error) => {
       console.log({ error });

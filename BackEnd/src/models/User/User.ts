@@ -1,14 +1,13 @@
-const mongoose = require("mongoose");
 import { validate as emailValidator } from "email-validator";
-const deliveryPersonSchema = mongoose.Schema({
+const mongoose = require("mongoose");
+const bcrypt = require('bcrypt')
+const userSchema = mongoose.Schema({
   name: { type: String, required: true },
   email: {
     type: String,
     required: true,
     unique: true,
-    validate: (value: string) => {
-      return emailValidator(value);
-    },
+  
   },
   address: {
     houseNumber: { type: String, required: true },
@@ -19,14 +18,21 @@ const deliveryPersonSchema = mongoose.Schema({
     state: { type: String, required: true },
     country: { type: String, required: true },
   },
+  password: { type: String, required: true },
   mobileNumber: { type: String, required: true, unique: true },
   profilePic: String,
   orderIdList: [{ type: String }],
 });
 
-const deliveryPersonModel = mongoose.model(
-  "deliveryPersonModel",
-  deliveryPersonSchema
-);
+// userSchema.pre('save',async function(user:{password:string}){
+//   let saltRounds = 10
+// await bcrypt.hash(user.password, saltRounds, (hash:string,err:string)=> {
+//   // Store hash in your password DB.
+//   console.log(hash)
+// });
+//   });
+  
 
-exports = deliveryPersonModel;
+const userModel = mongoose.model("Users", userSchema);
+
+export = userModel;

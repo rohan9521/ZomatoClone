@@ -1,20 +1,21 @@
 const express = require('express')
-const {dbConnect} = require('./database/Database')
+const {dbConnect} = require('./src/database/Database')
 const dotenv = require("dotenv");
-const userModel = require('./models/User')
+const userModel = require('./src/models/User')
 const app = express()
-app.listen(3000)
+
 
 
 dotenv.config();
 const router = express.Router();
 
-dbConnect()
 
+
+console.log({userModel})
 const createUser =async ()=>{
     let user = {
       name: "ROhan",
-      email: "rohan@gmail.com",
+      email: "rohan12@gmail.com",
       password: "test_123",
       address: {
         houseNumber: "1",
@@ -25,9 +26,11 @@ const createUser =async ()=>{
         state: "Delhi",
         country: "Bharat",
       },
-      mobileNumber:"879645413"
+      mobileNumber:"879645493"
     };
-    let data = await userModel.create(user)
+    console.log("this is user->",{user})
+    let data = await userModel.create(user);
     console.log(data)
 }
-createUser()
+app.listen(3000)
+dbConnect(createUser());

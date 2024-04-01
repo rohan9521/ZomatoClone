@@ -1,14 +1,12 @@
-import { validate as emailValidator } from "email-validator";
-
 const mongoose = require("mongoose");
-
-const userSchema = mongoose.Schema({
+import { validate as emailValidator } from "email-validator";
+const deliveryPersonSchema = mongoose.Schema({
   name: { type: String, required: true },
   email: {
     type: String,
     required: true,
     unique: true,
-    validate: (value:string) => {
+    validate: (value: string) => {
       return emailValidator(value);
     },
   },
@@ -21,12 +19,14 @@ const userSchema = mongoose.Schema({
     state: { type: String, required: true },
     country: { type: String, required: true },
   },
-  password: { type: String, required: true },
   mobileNumber: { type: String, required: true, unique: true },
   profilePic: String,
   orderIdList: [{ type: String }],
 });
 
-const userModel = mongoose.model("userModel", userSchema);
+const deliveryPersonModel = mongoose.model(
+  "deliveryPersonModel",
+  deliveryPersonSchema
+);
 
-export = userModel;
+export = deliveryPersonModel;
