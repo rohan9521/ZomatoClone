@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './SignUp.css'
+import "./SignUp.css";
 type Props = {};
 
 const SignUp = (props: Props) => {
@@ -13,125 +13,145 @@ const SignUp = (props: Props) => {
   const [area, setArea] = useState<string>("");
   const [houseNumber, setHouseNumber] = useState<string>("");
   const [landMark, setLandMark] = useState<string>("");
-  const [profilePic, setProfilePic] = useState<boolean>();
+  const [profilePic, setProfilePic] = useState<string>();
   const [mobileNumber, setMobileNumber] = useState<string>("");
 
   return (
     <>
-      <div>
-        <h1>Sign Up</h1>
-        <form className="form-signup">
-          <>
-            <h2>Name</h2>
+      <div className="form-signup">
+        <div className="media-area">
+          <h1>Sign Up</h1>
+        </div>
+        <div className="form-area">
+          <form className="card">
+            <div className="form-fields">
+              <div className="form-field-label">Name</div>
+              <input
+                className="form-field-input"
+                type="text"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+            </div>
+            <div className="form-fields">
+              <div className="form-field-label">Email</div>
+              <input
+                className="form-field-input"
+                type="text"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
+            <div className="form-fields">
+              <div className="form-field-label">Password</div>
+              <input
+                className="form-field-input"
+                type="text"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </div>
+            <div className="form-fields">
+              <div className="form-field-label">Mobile Number</div>
+              <input
+                className="form-field-input"
+                type="text"
+                value={mobileNumber}
+                onChange={(e) => {
+                  setMobileNumber(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="form-fields">
+              <button className="form-field-button">Submit</button>
+            </div>
+            {/* <div className="form-fields">
+            <div className="form-field-label">State</div>
             <input
-              type="text"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-          </>
-          <>
-            <h2>Email</h2>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </>
-          <>
-            <h2>Password</h2>
-            <input
-              type="text"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </>
-          <>
-            <h2>State</h2>
-            <input
+              className="form-field-input"
               type="text"
               value={state}
               onChange={(e) => {
                 setState(e.target.value);
               }}
             />
-          </>
-          <>
-            <h2>CountryCode</h2>
+          </div>
+          <div className="form-fields">
+            <div className="form-field-label">CountryCode</div>
             <input
+              className="form-field-input"
               type="text"
               value={countryCode}
               onChange={(e) => {
                 setCountryCode(e.target.value);
               }}
             />
-          </>
-          <>
-            <h2>Locality</h2>
+          </div>
+          <div className="form-fields">
+            <div className="form-field-label">Locality</div>
             <input
+              className="form-field-input"
               type="text"
               value={locality}
               onChange={(e) => {
                 setLocality(e.target.value);
               }}
             />
-          </>
-          <>
-            <h2>PinCode</h2>
+          </div>
+          <div className="form-fields">
+            <div className="form-field-label">PinCode</div>
             <input
+              className="form-field-input"
               type="text"
               value={pincode}
               onChange={(e) => {
                 setPincode(e.target.value);
               }}
             />
-          </>
-          <>
-            <h2>Area</h2>
+          </div>
+          <div className="form-fields">
+            <div className="form-field-label">Area</div>
             <input
+              className="form-field-input"
               type="text"
               value={area}
               onChange={(e) => {
                 setArea(e.target.value);
               }}
             />
-          </>
-          <>
-            <h2>Mobile Number</h2>
+          </div>
+         
+          <div className="form-fields">
+            <div className="form-field-label">House Number</div>
             <input
-              type="text"
-              value={mobileNumber}
-              onChange={(e) => {
-                setMobileNumber(e.target.value);
-              }}
-            />
-          </>
-          <>
-            <h2>House Number</h2>
-            <input
+              className="form-field-input"
               type="text"
               value={houseNumber}
               onChange={(e) => {
                 setHouseNumber(e.target.value);
               }}
             />
-          </>
-          <>
-            <h2>LandMark</h2>
+          </div>
+          <div className="form-fields">
+            <div className="form-field-label">LandMark</div>
             <input
               type="text"
+              className="form-field-input"
               value={landMark}
               onChange={(e) => {
                 setLandMark(e.target.value);
               }}
             />
-          </>
-        </form>
+          </div> */}
+          </form>
+        </div>
       </div>
     </>
   );
