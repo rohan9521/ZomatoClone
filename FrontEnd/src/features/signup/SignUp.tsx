@@ -1,21 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SignUp.css";
+import { useSignUp } from "../../hooks/useSignUp";
+import { useFormik } from "formik";
+import { UserData } from "../../types/userData";
+import { useForm } from "react-hook-form";
 type Props = {};
 
+type Inputs={
+  name: string;
+  email: string;
+  password: string;
+  mobileNumber: string;
+}
 const SignUp = (props: Props) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [pincode, setPincode] = useState<string>("");
-  const [state, setState] = useState<string>("");
-  const [countryCode, setCountryCode] = useState<string>("");
-  const [locality, setLocality] = useState<string>("");
-  const [area, setArea] = useState<string>("");
-  const [houseNumber, setHouseNumber] = useState<string>("");
-  const [landMark, setLandMark] = useState<string>("");
-  const [profilePic, setProfilePic] = useState<string>();
-  const [mobileNumber, setMobileNumber] = useState<string>("");
-
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState:{errors}
+  } = useForm<Inputs>()
+  const { mutate: addUser } = useSignUp();
+  const onSubmit = async (data:Inputs)=>{
+    await addUser(data)
+  }
   return (
     <>
       <div className="form-signup">
@@ -23,54 +30,48 @@ const SignUp = (props: Props) => {
           <h1>Sign Up</h1>
         </div>
         <div className="form-area">
-          <form className="card">
+          <form className="card" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-fields">
               <div className="form-field-label">Name</div>
               <input
                 className="form-field-input"
+                id="name"
                 type="text"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
+                {...register('name')}
               />
             </div>
             <div className="form-fields">
               <div className="form-field-label">Email</div>
               <input
+                id="email"
                 className="form-field-input"
                 type="text"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
+                {...register('email')}
               />
             </div>
             <div className="form-fields">
               <div className="form-field-label">Password</div>
               <input
+                id="password"
                 className="form-field-input"
                 type="text"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
+                {...register('password')}
               />
             </div>
             <div className="form-fields">
               <div className="form-field-label">Mobile Number</div>
               <input
+                id="mobileNumber"
                 className="form-field-input"
                 type="text"
-                value={mobileNumber}
-                onChange={(e) => {
-                  setMobileNumber(e.target.value);
-                }}
+                {...register('mobileNumber')}
               />
             </div>
 
             <div className="form-fields">
-              <button className="form-field-button">Submit</button>
+              <button className="form-field-button" type="submit">
+                Submit
+              </button>
             </div>
             {/* <div className="form-fields">
             <div className="form-field-label">State</div>

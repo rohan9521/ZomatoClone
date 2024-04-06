@@ -2,35 +2,26 @@ import express from 'express'
 const {dbConnect} = require('./src/database/Database')
 const dotenv = require("dotenv");
 const userModel = require('./src/models/User')
+dotenv.config();
+const PORT = process.env.PORT;
+var cors = require("cors");
+
 const app = express()
 
+app.use(express.json())
 
-
+app.use(cors());
 dotenv.config();
 const router = express.Router();
 
+app.listen(PORT)
 
+router.post('/signup',(req,res,next)=>{
+  console.log(req.body)
+  res.statusCode = 200
+  res.send({
+    status:"Good"
+  })
 
-console.log({userModel})
-const createUser =async ()=>{
-    let user = {
-      name: "ROhan",
-      email: "rohan12@gmail.com",
-      password: "test_123",
-      address: {
-        houseNumber: "1",
-        area: "RJ",
-        locality: "First Street",
-        landmark: "PO",
-        pincode: "110031",
-        state: "Delhi",
-        country: "Bharat",
-      },
-      mobileNumber:"879645493"
-    };
-    console.log("this is user->",{user})
-    let data = await userModel.create(user);
-    console.log(data)
-}
-app.listen(3000)
-dbConnect(createUser());
+})
+app.use(router);

@@ -16,7 +16,6 @@ const userSchema = mongoose.Schema({
     pincode: { type: String, required: true },
     state: { type: String, required: true },
     country: { type: String, required: true },
-    required:false
   },
   password: { type: String, required: true },
   mobileNumber: { type: String, required: true, unique: true },

@@ -24,7 +24,7 @@ import axios, {
   };
    const axiosClient = axios.create({
     baseURL: "http://localhost:9000",
-    timeout: 1000,
+    timeout: 10000,
     headers: {
       Authorization: "Bearer-Token",
       "Content-Type": "application/json",
