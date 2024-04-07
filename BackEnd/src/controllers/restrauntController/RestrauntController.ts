@@ -1,0 +1,7 @@
+const getAllRestraunt = ()=>{
+
+}
+
+export = {
+    getAllRestraunt
+}
