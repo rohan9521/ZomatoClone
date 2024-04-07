@@ -2,7 +2,7 @@ const { default: mongoose } = require("mongoose");
 
 const restrauntSchema = mongoose.Schema({
   name: { type: String, required: true },
-  ownerName: { type: String, required: true },
+  ownerId: { type: String, required: true, unique: true },
   address: {
     houseNumber: { type: String, required: true },
     area: { type: String, required: true },
@@ -12,11 +12,11 @@ const restrauntSchema = mongoose.Schema({
     state: { type: String, required: true },
     country: { type: String, required: true },
   },
-  mobileNumber: { type: String, required: true },
+  mobileNumber: { type: String, required: true, unique: true },
   restrauntPic: String,
   orderIdList: [{ type: String }],
 });
 
-const restrauntModel = mongoose.model("restrauntModel", userSchema);
+const restrauntModel = mongoose.model("restrauntModel", restrauntSchema);
 
-module.exports = { restrauntModel };
+export = { restrauntModel };

@@ -1,0 +1,7 @@
+const getAllFoodItemInRestraunt = ()=>{
+
+}
+
+export =  {
+    getAllFoodItemInRestraunt
+}

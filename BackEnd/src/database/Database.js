@@ -3,10 +3,9 @@ const dotenv = require('dotenv')
 dotenv.config()
 const dbLink = process.env.DB_LINK
 
-const dbConnect = () => {
-  console.log(dbLink)
-  mongoose.connect(dbLink)
-    .then((db) => {
+const dbConnect =async () => {
+ await  mongoose.connect(dbLink)
+    .then(async() => {
       console.log("dbConnected");
     })
     .catch((error) => {
