@@ -10,4 +10,12 @@ const userSignUp = async(req:Request, res:Response) => {
   });
 }
 
-export = {userSignUp}
+// this is an example of setting cookies it will be modified in future.
+const setCookies = async (req: Request, res: Response) => {
+  res.cookie('userName',req.body.name)
+  res.send({
+    status:'cookieSet'
+  })
+};
+
+export = {userSignUp,setCookies}

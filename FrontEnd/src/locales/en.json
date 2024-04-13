@@ -1,0 +1,26 @@
+{
+  "features.signup.header.label": "Please signup",
+  "features.signup.form.name.label": "Name",
+  "features.signup.form.password.label": "Passwod",
+  "features.signup.form.email.label": "Email",
+  "features.signup.form.mobileNumber.label": "Mobile Number",
+
+  "features.signup.form.name.error.required.message": "Please enter name",
+  "features.signup.form.password.error.required.message": "Please enter passwod",
+  "features.signup.form.email.error.required.message": "Please enter email",
+  "features.signup.form.mobileNumber.error.required.message": "Please enter mobile Number",
+
+  "features.signup.form.email.error.validation.message": "Please enter correct email",
+  "features.signup.form.mobileNumber.error.validation.message": "Please enter correct mobile number",
+  "features.signup.form.password.error.validation.message": "Password must be of length 8 - 20, with alphanumeric.All special characters are allowed",
+
+  "features.login.header.label": "Please login",
+  "features.login.form.mobileNumber.label": "Mobile Number",
+  "features.login.form.password.label": "Passwod",
+
+  "features.login.form.mobileNumber.error.required.message": "Please enter mobileNumber",
+  "features.login.form.password.error.required.message": "Please enter password",
+
+  "features.login.form.mobileNumber.error.validation.message": "Please enter correct mobile number",
+  "features.login.form.password.error.validation.message": "Password must be of length 8 - 20, with alphanumeric.All special characters are allowed"
+}
