@@ -1,10 +1,10 @@
 
 import axiosClient from "../axiosClient";
-import { UserData } from "../types/userData";
+import { UserData } from "../hooks/useSignUp";
 
 export const signUp = async (userData:UserData):Promise<void>=>{
     return axiosClient({
-      url: "/signup",
+      url: "/user/signup",
       method: "POST",
       data :{...userData},
       

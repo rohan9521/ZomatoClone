@@ -18,7 +18,7 @@
   "features.login.form.mobileNumber.label": "Mobile Number",
   "features.login.form.password.label": "Passwod",
 
-  "features.login.form.mobileNumber.error.required.message": "Please enter mobileNumber",
+  "features.login.form.mobileNumber.error.required.message": "Please enter mobile number",
   "features.login.form.password.error.required.message": "Please enter password",
 
   "features.login.form.mobileNumber.error.validation.message": "Please enter correct mobile number",
