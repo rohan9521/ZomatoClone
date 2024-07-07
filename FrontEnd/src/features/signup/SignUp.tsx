@@ -1,79 +1,126 @@
 import React from "react";
 import "./SignUp.css";
 import { useSignUp } from "../../hooks/useSignUp";
-import { useFormik } from "formik";
-import { UserData } from "../../types/userData";
-import { useForm } from "react-hook-form";
+import { Controller, FormProvider, useForm } from "react-hook-form";
+import { Inputs, validationSchema } from "./Config";
+import { useTranslation } from "react-i18next";
+
+import { yupResolver } from "@hookform/resolvers/yup";
 type Props = {};
 
-type Inputs={
-  name: string;
-  email: string;
-  password: string;
-  mobileNumber: string;
-}
 const SignUp = (props: Props) => {
+  const { t } = useTranslation();
+  const methods = useForm<Inputs>({
+    resolver: yupResolver(validationSchema),
+  });
   const {
-    register,
     handleSubmit,
     watch,
-    formState:{errors}
-  } = useForm<Inputs>()
+    control,
+    formState: { errors }
+  } = methods;
   const { mutate: addUser } = useSignUp();
-  const onSubmit = async (data:Inputs)=>{
-    await addUser(data)
-  }
+  const onSubmit = async (data: Inputs) => {
+    await addUser(data);
+  };
   return (
     <>
       <div className="form-signup">
         <div className="media-area">
           <h1>Sign Up</h1>
+          <p>{t("features.signup.header.label")}</p>
         </div>
         <div className="form-area">
-          <form className="card" onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-fields">
-              <div className="form-field-label">Name</div>
-              <input
-                className="form-field-input"
-                id="name"
-                type="text"
-                {...register('name')}
-              />
-            </div>
-            <div className="form-fields">
-              <div className="form-field-label">Email</div>
-              <input
-                id="email"
-                className="form-field-input"
-                type="text"
-                {...register('email')}
-              />
-            </div>
-            <div className="form-fields">
-              <div className="form-field-label">Password</div>
-              <input
-                id="password"
-                className="form-field-input"
-                type="text"
-                {...register('password')}
-              />
-            </div>
-            <div className="form-fields">
-              <div className="form-field-label">Mobile Number</div>
-              <input
-                id="mobileNumber"
-                className="form-field-input"
-                type="text"
-                {...register('mobileNumber')}
-              />
-            </div>
-
-            <div className="form-fields">
-              <button className="form-field-button" type="submit">
-                Submit
-              </button>
-            </div>
-            {/* <div className="form-fields">
+          <FormProvider {...methods}>
+            <form className="card" onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-fields">
+                <Controller
+                  control={control}
+                  name="name"
+                  render={({ field: { name, ...rest } }) => (
+                    <>
+                      <div className="form-field-label">
+                        {t("features.signup.form.name.label")}
+                      </div>
+                      <input
+                        {...rest}
+                        name={name}
+                        className="form-field-input"
+                        type="text"
+                      />
+                    </>
+                  )}
+                />
+                {errors.name && <p>{errors.name.message}</p>}
+              </div>
+              <div className="form-fields">
+                <Controller
+                  control={control}
+                  name="email"
+                  render={({ field: { name, ...rest } }) => (
+                    <>
+                      <div className="form-field-label">
+                        {t("features.signup.form.email.label")}
+                      </div>
+                      <input
+                        name={name}
+                        className="form-field-input"
+                        type="text"
+                        {...rest}
+                      />
+                      {errors.email && <p>{errors.email.message}</p>}
+                    </>
+                  )}
+                />
+              </div>
+              <div className="form-fields">
+                <Controller
+                  control={control}
+                  name="password"
+                  render={({ field: { name, ...rest } }) => (
+                    <>
+                      <div className="form-field-label">
+                        {t("features.signup.form.password.label")}
+                      </div>
+                      <input
+                        {...rest}
+                        name={name}
+                        className="form-field-input"
+                        type="password"
+                      />
+                      {errors.password && <p>{errors.password.message}</p>}
+                    </>
+                  )}
+                />
+              </div>
+              <div className="form-fields">
+                <Controller
+                  control={control}
+                  name="mobileNumber"
+                  render={({ field: { name, ...rest } }) => (
+                    <>
+                      <div className="form-field-label">
+                        {t("features.signup.form.mobileNumber.label")}
+                      </div>
+                      <input
+                        {...rest}
+                        name={name}
+                        className="form-field-input"
+                        type="number"
+                      />
+                      {errors.mobileNumber && (
+                        <p>{errors.mobileNumber.message}</p>
+                      )}
+                    </>
+                  )}
+                />
+              </div>
+              <div className="form-fields">
+                <button className="form-field-button" type="submit">
+                  Submit
+                </button>
+              </div>
+              {/* <div className="form-fields">
             <div className="form-field-label">State</div>
             <input
               className="form-field-input"
@@ -151,7 +198,8 @@ const SignUp = (props: Props) => {
               }}
             />
           </div> */}
-          </form>
+            </form>
+          </FormProvider>
         </div>
       </div>
     </>

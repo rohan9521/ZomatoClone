@@ -3,11 +3,12 @@ import React from 'react'
 
 type Props = {}
 
-const Home:React.FC = ()=> {
+const DashBoard:React.FC = ()=> {
   return (
    <>
+   
    </>
   )
 }
 
-export default Home
+export default DashBoard

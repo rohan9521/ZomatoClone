@@ -28,10 +28,6 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: RoutePath.SplashScreen,
-    element: <SplashScreen />,
-  },
-  {
     path: RoutePath.Login,
     element: <Login />,
   },
