@@ -1,7 +1,7 @@
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
-import Routes from './route/Routes';
+import Routes from './route';
 import { I18nextProvider } from 'react-i18next';
 import i18n from "i18next";
 function App (){

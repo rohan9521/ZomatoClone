@@ -1,9 +1,8 @@
 export enum RoutePath {
-  SplashScreen = "/",
-  Home = "/home",
+  Home = "/",
   UserProfile = "/user-profile",
   SignUp = "signup",
   Login = "/login",
   Cart = "/cart",
-  DashBoard = '/dashBoard'
+  DashBoard = '/dashBoard',
 }

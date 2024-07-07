@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import "./Login.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLogin } from "../../hooks/useLogin";
+import {DevTool} from "@hookform/devtools";
+
 type Props = {};
 
 const Login: React.FC = ({}: Props) => {
@@ -90,6 +92,7 @@ const Login: React.FC = ({}: Props) => {
               </div>
             </form>
           </FormProvider>
+          <DevTool  control={control}/>
         </div>
       </div>
     </>

@@ -1,10 +1,12 @@
 import express from "express";
-import userSignUp from "../../controllers/userController";
+import userController from "../../controllers/userController";
 
 const userRouter = express.Router();
-console.log(JSON.stringify(userSignUp));
-userRouter.route("/signup").post(userSignUp.userSignUp);
 
-userRouter.route("/setCookies").get(userSignUp.setCookies);
+userRouter.route("/signup").post(userController.userSignUp);
+
+userRouter.route("/setCookies").get(userController.setCookies);
+
+userRouter.route("/:id").get(userController.getUserById);
 
 export default userRouter;

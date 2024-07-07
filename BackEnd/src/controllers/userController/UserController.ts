@@ -1,5 +1,6 @@
 import {Request,Response } from 'express'
 import userModel from '../../models/User';
+import { ObjectId } from 'mongodb';
 const userSignUp = async(req:Request, res:Response) => {
   console.log(req.body);
   const user = await userModel.create(req.body)
@@ -18,4 +19,17 @@ const setCookies = async (req: Request, res: Response) => {
   })
 };
 
-export = {userSignUp,setCookies}
+const getUserById = async (req: Request, res: Response) => {
+ console.log(req.body)
+  const user = await userModel.findById(req.params.id)
+  res.send({
+    user
+  });
+};
+const userController = {
+  userSignUp,
+  setCookies,
+  getUserById
+}
+
+export default userController

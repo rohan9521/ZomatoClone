@@ -27,7 +27,7 @@ app.use(cookieParser())
     }
     console.log(token)
   }
-app.use('/user',protctedRoute,userRouter);
+app.use('/user',userRouter);
 app.use('/auth',authRouter)
 app.listen(PORT,async ()=>{
   console.log("Server started")
