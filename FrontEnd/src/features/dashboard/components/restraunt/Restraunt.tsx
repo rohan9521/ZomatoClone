@@ -1,10 +1,11 @@
 import React from 'react'
-
+import './restaurant.scss'
 type Props = {}
 
 const Restraunt:React.FC = ({}: Props) =>{
   return (
-    <div>Restraunt</div>
+    <div className='restraunt-container'>Restraunt</div>
+
   )
 }
 

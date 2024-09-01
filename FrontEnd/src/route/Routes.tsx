@@ -1,11 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RoutePath } from "./RoutePath";
-import Home from "../features/home";
+import Home from "../features/dashboard";
 import SignUp from "../features/signup";
 import Login from "../features/login";
 import SplashScreen from "../features/splashScreen";
 import UserProfile from "../features/userProfile";
 import Cart from "../features/cart/Cart";
+import DashBoard from "../features/dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: RoutePath.Home + RoutePath.DashBoard,
-        element: <Home />,
+        element: <DashBoard />,
       },
 
       {
